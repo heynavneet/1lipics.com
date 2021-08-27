@@ -1,0 +1,3 @@
+# disable directory browsing
+Options All -Indexes
+ErrorDocument 403 /404.php

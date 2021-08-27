@@ -1,0 +1,22 @@
+Options +FollowSymLinks
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php [NC,L] 
+
+## --old htaccess--
+
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_URI} stories/([0-9]+)/([a-z\-A-Z]+)
+
+RewriteRule ^([a-zA-z0-9_-]+)/?$ profile.php?username=$1 [QSA] 
+RewriteRule ^users/(\d+)*$ ./member.php?id=$1
+RewriteRule ^result/([a-zA-z0-9_-])/?$ result.php?query=$1
+
+ErrorDocument 400 /404.php
+ErrorDocument 401 /404.php
+ErrorDocument 403 /404.php
+ErrorDocument 404 /404.php
+ErrorDocument 500 /404.php
